@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Обмены скинов</title>
+    <title>Профиль</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
@@ -8,11 +8,10 @@
 <header th:insert="blocks/header :: header"></header>
 
 <div class="container mt-5">
-    <h1>Обмены скинов</h1>
+    <h1>Авторизация</h1>
     <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el.floatSkin}"/>
-        <p th:text="${el.nameSkin}"/>
-        <a th:href="'/trade/' + ${el.id}" class="btn btn-warning " >Детальнее</a>
+        <a th:href="" class="btn btn-warning " >Войти</a><br><br>
+        <a th:href="" class="btn btn-warning " >Зарегистрироваться</a>
     </div>
 
     <div th:insert="blocks/footer :: footer"></div>

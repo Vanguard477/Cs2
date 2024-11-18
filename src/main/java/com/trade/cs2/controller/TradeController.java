@@ -34,8 +34,8 @@ public class TradeController {
     }
 
     @PostMapping("/trade/add")
-    public String postTradeAdd(@RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String full_text, Model model) {
-        Post post = new Post(nameSkin, floatSkin, full_text);
+    public String postTradeAdd(@RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText, Model model) {
+        Post post = new Post(nameSkin, floatSkin, fullText);
         postRepository.save(post);
         return "redirect:/trade";
     }
@@ -52,6 +52,36 @@ public class TradeController {
         model.addAttribute("post", res);
         return "trade-details";
     }
+
+    @GetMapping("/trade/{id}/edit")
+    public String tradeEdit(@PathVariable(value = "id") long id, Model model) {
+        if(!postRepository.existsById(id)){
+            return "redirect:/trade";
+        }
+        Optional<Post> post = postRepository.findById(id);
+        ArrayList<Post> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("post", res);
+        return "trade-edit";
+    }
+
+    @PostMapping("/trade/{id}/edit")
+    public String postTradeUpdate(@PathVariable(value = "id") long id, @RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText, Model model) {
+        Post post = postRepository.findById(id).orElseThrow();
+        post.setNameSkin(nameSkin);
+        post.setFloatSkin(floatSkin);
+        post.setFullText(fullText);
+        postRepository.save(post);
+        return "redirect:/trade";
+    }
+
+    @PostMapping("/trade/{id}/remove")
+    public String postTradeRemove(@PathVariable(value = "id") long id, Model model) {
+        Post post = postRepository.findById(id).orElseThrow();
+        postRepository.delete(post);
+        return "redirect:/trade";
+    }
+
 
 
 }

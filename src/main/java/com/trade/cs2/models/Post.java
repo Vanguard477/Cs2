@@ -11,7 +11,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String nameSkin, floatSkin, full_text;
+    private String nameSkin, floatSkin, fullText;
     private int views;
 
     public Long getId() {
@@ -22,28 +22,28 @@ public class Post {
         this.id = id;
     }
 
-    public String getTitle() {
+    public String getNameSkin() {
         return nameSkin;
     }
 
-    public void setTitle(String nameSkin) {
+    public void setNameSkin(String nameSkin) {
         this.nameSkin = nameSkin;
     }
 
-    public String getAnons() {
+    public String getFloatSkin() {
         return floatSkin;
     }
 
-    public void setAnons(String floatSkin) {
+    public void setFloatSkin(String floatSkin) {
         this.floatSkin = floatSkin;
     }
 
-    public String getFull_text() {
-        return full_text;
+    public String getFullText() {
+        return fullText;
     }
 
-    public void setFull_text(String full_text) {
-        this.full_text = full_text;
+    public void setFullText(String full_text) {
+        this.fullText = full_text;
     }
 
     public int getViews() {
@@ -60,6 +60,6 @@ public class Post {
     public Post(String floatSkin, String nameSkin, String full_text) {
         this.floatSkin = floatSkin;
         this.nameSkin = nameSkin;
-        this.full_text = full_text;
+        this.fullText = full_text;
     }
 }
