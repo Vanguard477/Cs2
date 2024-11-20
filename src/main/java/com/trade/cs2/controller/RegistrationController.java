@@ -2,7 +2,6 @@ package com.trade.cs2.controller;
 
 
 import com.trade.cs2.models.User;
-import com.trade.cs2.repo.UserRepository;
 import com.trade.cs2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,19 +10,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
 public class RegistrationController {
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private UserService userService;
+
 
     @GetMapping("/registration")
     public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+        model.addAttribute("title", "Регистрация");
         return "registration";
     }
 

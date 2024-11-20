@@ -2,11 +2,11 @@ package com.trade.cs2.controller;
 
 
 import com.trade.cs2.models.Post;
+import com.trade.cs2.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.trade.cs2.repo.PostRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,7 +34,7 @@ public class TradeController {
     }
 
     @PostMapping("/trade/add")
-    public String postTradeAdd(@RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText, Model model) {
+    public String postTradeAdd(@RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText) {
         Post post = new Post(nameSkin, floatSkin, fullText);
         postRepository.save(post);
         return "redirect:/trade";
@@ -43,7 +43,7 @@ public class TradeController {
 
     @GetMapping("/trade/{id}")
     public String tradeDetails(@PathVariable(value = "id") long id, Model model) {
-        if(!postRepository.existsById(id)){
+        if (!postRepository.existsById(id)) {
             return "redirect:/trade";
         }
         Optional<Post> post = postRepository.findById(id);
@@ -55,7 +55,7 @@ public class TradeController {
 
     @GetMapping("/trade/{id}/edit")
     public String tradeEdit(@PathVariable(value = "id") long id, Model model) {
-        if(!postRepository.existsById(id)){
+        if (!postRepository.existsById(id)) {
             return "redirect:/trade";
         }
         Optional<Post> post = postRepository.findById(id);
@@ -66,7 +66,7 @@ public class TradeController {
     }
 
     @PostMapping("/trade/{id}/edit")
-    public String postTradeUpdate(@PathVariable(value = "id") long id, @RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText, Model model) {
+    public String postTradeUpdate(@PathVariable(value = "id") long id, @RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText) {
         Post post = postRepository.findById(id).orElseThrow();
         post.setNameSkin(nameSkin);
         post.setFloatSkin(floatSkin);
@@ -81,7 +81,6 @@ public class TradeController {
         postRepository.delete(post);
         return "redirect:/trade";
     }
-
 
 
 }

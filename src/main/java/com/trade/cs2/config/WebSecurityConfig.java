@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -28,7 +27,7 @@ public class WebSecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
 
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/trade", "/about", "/registration", "/profile", "/img/**").permitAll()
-                        .requestMatchers( "/trade/{id}", "/trade/add", "/trade/{id}/edit", "/trade/{id}/remove", "/login" ).authenticated())
+                        .requestMatchers("/trade/{id}", "/trade/add", "/trade/{id}/edit", "/trade/{id}/remove", "/login").authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .formLogin(formLogin -> formLogin.loginPage("/login").permitAll()).build();
     }
