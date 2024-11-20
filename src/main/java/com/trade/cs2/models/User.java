@@ -2,35 +2,31 @@ package com.trade.cs2.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import org.springframework.context.support.BeanDefinitionDsl;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import java.io.Serializable;
+
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "t_user")
+@Table(name = "user")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@Size(min=2, message = "Не меньше 5 знаков")
     private String username;
-    //@Size(min=2, message = "Не меньше 5 знаков")
     private String password;
+    @Getter
     @Transient
     private String passwordConfirm;
+    /*
+    @Getter
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
-
-    public User() {
-    }
-
-    public Long getId() {
-        return id;
-    }
+     */
 
     public void setId(Long id) {
         this.id = id;
@@ -64,10 +60,10 @@ public class User implements UserDetails {
     public void setUsername(String username) {
         this.username = username;
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
+        ;
+        return List.of();
     }
 
     @Override
@@ -79,19 +75,16 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
     }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
+/*
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+ */
+
+
+
 }

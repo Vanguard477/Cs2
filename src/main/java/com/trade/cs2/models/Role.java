@@ -2,10 +2,11 @@ package com.trade.cs2.models;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+/*
 
 import java.util.Set;
 @Entity
-@Table(name = "t_role")
+@Table(name = "role")
 public class Role implements GrantedAuthority {
     @Id
     private Long id;
@@ -54,3 +55,8 @@ public class Role implements GrantedAuthority {
         return getName();
     }
 }
+
+ */
+
+
+

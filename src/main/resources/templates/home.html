@@ -1,118 +1,121 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head style=background-color:#313135>
     <title th:text="${title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
-<body>
-
 <header th:insert="blocks/header :: header"></header>
 
 <main>
-
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Trade CS2</h1>
                 <p class="lead text-body-secondary">Маркет для покупки и обмена скинов с другими пользователями</p>
                 <p>
-                    <a href="#" class="btn btn-primary my-2">Войти в профиль</a>
-                    <a href="#" class="btn btn-secondary my-2">Зарегистрироваться</a>
+                    <a href="/login" class="btn btn-primary my-2">Войти в профиль</a>
+                    <a href="/registration" class="btn btn-secondary my-2">Зарегистрироваться</a>
                 </p>
             </div>
         </div>
     </section>
+    <div style=background-color:#313135>
+        <div class="album py-5 bg-body-tertiary">
+            <div class="container" style=background-color:#313135>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/AWPDragonLore.png">
+                            <div class="card-body">
+                                <p class="card-text">AWP | Dragon Lore (Field-Tested)</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                                    </div>
+                                    <small class="text-body-secondary">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/Karambit-Fade-Guide.png">
+                            <div class="card-body">
+                                <p class="card-text">Karambit | Fade (Factory New)</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                                    </div>
+                                    <small class="text-body-secondary">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/AK-47CaseHardened.png">
+                            <div class="card-body">
+                                <p class="card-text">AK-47 | Case Hardened (Factory New)</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                                    </div>
+                                    <small class="text-body-secondary">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="album py-5 bg-body-tertiary">
-        <div class="container">
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/AWPDragonLore.png">
-                        <div class="card-body">
-                            <p class="card-text">AWP | Dragon Lore (Field-Tested)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/SportGlovesVice.bmp">
+                            <div class="card-body">
+                                <p class="card-text">Sport Gloves | Vice (Field-Tested)</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                                    </div>
+                                    <small class="text-body-secondary">9 mins</small>
                                 </div>
-                                <small class="text-body-secondary">9 mins</small>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/Karambit-Fade-Guide.png">
-                        <div class="card-body">
-                            <p class="card-text">Karambit | Fade (Factory New)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/ButterflyFade.png">
+                            <div class="card-body">Butterfly | Fade (Factory New)</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                                    </div>
+                                    <small class="text-body-secondary">9 mins</small>
                                 </div>
-                                <small class="text-body-secondary">9 mins</small>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/AK-47CaseHardened.png">
-                        <div class="card-body">
-                            <p class="card-text">AK-47 | Case Hardened (Factory New)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/AWPAsiimov.png">
+                            <div class="card-body">
+                                <p class="card-text">AWP | Asiimov (Field-Tested)</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
+                                    </div>
+                                    <small class="text-body-secondary">9 mins</small>
                                 </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/SportGlovesVice.bmp">
-                        <div class="card-body">
-                            <p class="card-text">Sport Gloves | Vice (Field-Tested)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/ButterflyFade.png">
-                        <div class="card-body">Butterfly | Fade (Factory New)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/AWPAsiimov.png">
-                        <div class="card-body">
-                            <p class="card-text">AWP | Asiimov (Field-Tested)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Обменять</button>
-                                </div>
-                                <small class="text-body-secondary">9 mins</small>
                             </div>
                         </div>
                     </div>
@@ -120,9 +123,7 @@
             </div>
         </div>
     </div>
-
 </main>
-
 <div th:insert="blocks/footer :: footer"></div>
 
 </body>

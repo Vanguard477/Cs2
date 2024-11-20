@@ -1,9 +1,6 @@
 package com.trade.cs2.service;
 
-
-import com.trade.cs2.models.Role;
 import com.trade.cs2.models.User;
-// import com.trade.cs2.repo.RoleRepository;
 import com.trade.cs2.repo.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -15,21 +12,23 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService  implements UserDetailsService{
     @PersistenceContext
     private EntityManager em;
-    @Qualifier
+    @Autowired
     UserRepository userRepository;
     //@Qualifier
     //RoleRepository roleRepository;
-    //@Autowired
+    @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
@@ -37,13 +36,13 @@ public class UserService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-
         return user;
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public User findUserById(Long userId) {
-        Optional<User> userFromDb = userRepository.findById(userId);
-        return userFromDb.orElse(new User());
+        Optional<User> userFromBd = userRepository.findById(userId);
+        return userFromBd.orElse(new User());
     }
 
     public List<User> allUsers() {
@@ -57,7 +56,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        //user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
@@ -75,4 +74,10 @@ public class UserService implements UserDetailsService {
         return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
                 .setParameter("paramId", idMin).getResultList();
     }
+
+
+
 }
+
+
+

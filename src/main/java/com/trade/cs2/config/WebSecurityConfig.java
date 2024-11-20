@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -14,41 +15,34 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
-@Configuration
 @EnableWebSecurity
+@Configuration
 public class WebSecurityConfig {
     @Autowired
-    UserService userService;
-
-    /*  @Bean
-      public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-          UserDetails admin = User.builder().username("admin").password(encoder.encode("admin")).build();
-          UserDetails user = User.builder().username("user").password(encoder.encode("user")).build();
-          UserDetails danil = User.builder().username("danil").password(encoder.encode("danil")).build();
-          return new InMemoryUserDetailsManager(admin, user, danil);
-      }
-
-     */
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    private UserService userService;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/trade", "/about").permitAll()
-                        .requestMatchers("/profile", "/trade/{id}", "/trade/add", "/trade/{id}/edit", "/trade/{id}/remove").authenticated())
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll).build();
+
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/trade", "/about", "/registration", "/profile", "/img/**").permitAll()
+                        .requestMatchers( "/trade/{id}", "/trade/add", "/trade/{id}/edit", "/trade/{id}/remove", "/login" ).authenticated())
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
+                .formLogin(formLogin -> formLogin.loginPage("/login").permitAll()).build();
     }
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
 
 
 }
+
+
+
 
 
 
