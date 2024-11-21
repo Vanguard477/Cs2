@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -6,17 +6,206 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<div class="container mt-5">
-    <h1>Профиль</h1>
-    <div>
-            <h2></h2>
-                <h3><th:block={pageContext.request.userPrincipal.name}</h3>
-                <sec:authorize access="!isAuthenticated()">
-                    <h4><a href="/login">Войти</a></h4>
-                    <h4><a href="/registration">Зарегистрироваться</a></h4>
-                </sec:authorize>
-    </div>
+<div>
+    <section style="background-color: #eee">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card mb-1">
+                        <div class="card-body text-center">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                 alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-3">John Smith</h5>
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="/logout" class="btn btn-primary">Выйти</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item justify-content-between align-items-center p-3">
+                                    <i class="fas fa-globe fa-lg text-warning"></i>
+                                    <a href="/trade" class="btn btn-outline-primary">Обмены</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center p-3">
+                                    <i class="fab fa-github fa-lg text-body"></i>
+                                    <a href="#" class="btn btn-outline-primary">Продать предметы</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center p-3">
+                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                                    <a href="#" class="btn btn-outline-primary">Отслеживаемые предметы</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center p-3">
+                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                                    <a href="#" class="btn btn-outline-primary">Настройка</a>
+                                </li>
+                                <li class="list-group-item justify-content-between align-items-center p-3">
+                                    <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                                    <a href="#" class="btn btn-outline-primary">Поддержка</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Имя</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">Johnatan Smith</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">alekseev.dn@mail.ru</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Телефон</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">8(953)234-56-78</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Адрес</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">Moscow, Decabristov 29</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-15">
+                            <div class="card mb-4 mb-md-0">
+                                <div class="card-body">
+                                    <p class="mb-4">Инвентарь</p>
+                                </div>
+                                <div>
+                                    <div class="album py-4 bg-body-tertiary">
+                                        <div class="container">
+                                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                                                <div class="col">
+                                                    <div class="card shadow-sm">
+                                                        <img src="img/AWPDragonLore.png"
+                                                             alt="avatar"
+                                                             class="rounded-circle img-fluid" style="width: 250px;">
+                                                        <div class="card-body">
+                                                            <p class="card-text d-flex justify-content-center mb-2">AWP
+                                                                | Dragon Lore</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="btn-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card shadow-sm">
+                                                        <img src="img/Karambit-Fade-Guide.png"
+                                                             alt="avatar"
+                                                             class="rounded-circle img-fluid" style="width: 250px;">
+                                                        <div class="card-body">
+                                                            <p class="card-text d-flex justify-content-center mb-2">
+                                                                Karambit | Fade</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="btn-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card shadow-sm">
+                                                        <img src="img/AK-47CaseHardened.png"
+                                                             alt="avatar"
+                                                             class="rounded-circle img-fluid" style="width: 250px;">
+                                                        <div class="card-body">
+                                                            <p class="card-text d-flex justify-content-center mb-2">
+                                                                AK-47 | Case Hardened</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="btn-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card shadow-sm">
+                                                        <img src="img/SportGlovesVice.bmp"
+                                                             alt="avatar"
+                                                             class="rounded-circle img-fluid" style="width: 250px;">
+                                                        <div class="card-body">
+                                                            <p class="card-text d-flex justify-content-center mb-2">
+                                                                Sport Gloves | Vice</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="btn-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card shadow-sm">
+                                                        <img src="img/ButterflyFade.png"
+                                                             alt="avatar"
+                                                             class="rounded-circle img-fluid" style="width: 250px;">
+                                                        <div class="card-body">
+                                                            <p class="card-text d-flex justify-content-center mb-2">
+                                                                Butterfly | Fade</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="btn-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="card shadow-sm">
+                                                        <img src="img/AWPAsiimov.png"
+                                                             alt="avatar"
+                                                             class="rounded-circle img-fluid" style="width: 250px;">
+                                                        <div class="card-body">
+                                                            <p class="card-text d-flex justify-content-center mb-2">AWP
+                                                                | Asiimov</p>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div class="btn-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 <div th:insert="blocks/footer :: footer"></div>
 </body>
+
 </html>
