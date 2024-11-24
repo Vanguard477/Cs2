@@ -1,64 +1,50 @@
 package com.trade.cs2.service;
 
+
+import com.trade.cs2.dto.CreateUserDto;
+import com.trade.cs2.mapper.UserMapper;
 import com.trade.cs2.models.User;
 import com.trade.cs2.repo.UserRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.Role;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService  implements UserDetailsService{
-    @PersistenceContext
-    private EntityManager em;
+public class UserService implements UserDetailsService {
     @Autowired
-    UserRepository userRepository;
-    //@Qualifier
-    //RoleRepository roleRepository;
+    private UserRepository userRepository;
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private UserMapper userMapper;
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return user;
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public User findUserById(Long userId) {
         Optional<User> userFromBd = userRepository.findById(userId);
         return userFromBd.orElse(new User());
     }
 
-    public List<User> allUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user) {
-        User userFromDB = userRepository.findByUsername(user.getUsername());
-
-        if (userFromDB != null) {
+    public boolean saveUser(CreateUserDto userDto) {
+        if (userRepository.existsByUsername(userDto.getUsername())) {
             return false;
-        }
 
-        //user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        }
+        userRepository.save(userMapper.toUser(userDto));
         return true;
     }
 
@@ -70,14 +56,5 @@ public class UserService  implements UserDetailsService{
         return false;
     }
 
-    public List<User> usergtList(Long idMin) {
-        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
-                .setParameter("paramId", idMin).getResultList();
-    }
-
-
-
 }
-
-
 

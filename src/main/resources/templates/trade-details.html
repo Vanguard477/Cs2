@@ -12,7 +12,7 @@
         <h1 th:text="${el.floatSkin}"/>
         <p th:text="${el.fullText}"/>
         <p><b>Просмотры: </b> <span th:text="${el.views}"></p>
-        <a th:href="'/trade/' + ${el.id} + '/edit'" class="btn btn-warning " >Редактировать</a><br><br>
+        <a th:href="'/trade/' + ${el.id} + '/edit'" class="btn btn-warning ">Редактировать</a><br><br>
         <form th:action="'/trade/' + ${el.id} + '/remove'" method="post">
             <button class="btn btn-warning " type="submit">Удалить</button>
         </form>
@@ -20,6 +20,6 @@
     </div>
 
     <div th:insert="blocks/footer :: footer"></div>
-
+</div>
 </body>
 </html>

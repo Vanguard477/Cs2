@@ -1,18 +1,29 @@
 <body>
 <div th:fragment="header">
-    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-3 border-bottom" style= background-color:#313135>
-        <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-            <span class="fs-4"><b style="color:#736eb4" >Trade CS2</b></span>
-        </a>
-        <nav class="d-inline-flex mt-25 mt-md-25 ms-md-auto">
-            <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/"><b style="color:#736eb4" >Главная</b></a>
-                <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/trade"><b style="color:#736eb4" >Обмены</b></a>
-                <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/trade/add"><b style="color:#736eb4" >Добавить обмен</b></a>
-                <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="#"><b style="color:#736eb4" >Магазин</b></a>
-                <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/about"><b style="color:#736eb4" >О нас</b></a>
-                <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/profile"><b style="color:#736eb4" >Профиль</b></a>
-        </nav>
-    </div>
+    <header data-bs-theme="dark">
+        <div class="text-bg-dark collapse" id="navbarHeader" style="">
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand align-items-center">
+                    <img src="img/Avatar.png"
+                         alt="avatar"
+                         class="rounded-circle img-fluid" style="width: 40px;">
+                    <strong><b style="color:#736eb4">Trade CS2</b></strong>
+                </a>
+                <nav class="d-inline-flex mt-25 mt-md-25 ms-md-auto">
+                    <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/"><b style="color:#736eb4">Главная</b></a>
+                    <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/trade"><b style="color:#736eb4">Обмены</b></a>
+                    <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/trade/add"><b
+                            style="color:#736eb4">Добавить обмен</b></a>
+                    <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="#"><b style="color:#736eb4">Магазин</b></a>
+                    <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/about"><b style="color:#736eb4">О
+                        нас</b></a>
+                    <a class="me-4 py-4 link-body-emphasis text-decoration-none" href="/profile"><b
+                            style="color:#736eb4">Профиль</b></a>
+                </nav>
+            </div>
+        </div>
+    </header>
 </div>
 </body>
-

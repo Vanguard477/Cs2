@@ -2,29 +2,29 @@ package com.trade.cs2.controller;
 
 
 import com.trade.cs2.models.Post;
+import com.trade.cs2.repo.PostRepository;
+import com.trade.cs2.service.TradeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.trade.cs2.repo.PostRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
+@RequiredArgsConstructor
 @Controller
 public class TradeController {
-
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private final TradeService tradeService;
 
 
     @GetMapping("/trade")
     public String trade(Model model) {
-        Iterable<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
+        model.addAttribute("post", postRepository.findAll());
         return "trade";
     }
 
@@ -34,54 +34,41 @@ public class TradeController {
     }
 
     @PostMapping("/trade/add")
-    public String postTradeAdd(@RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText, Model model) {
-        Post post = new Post(nameSkin, floatSkin, fullText);
-        postRepository.save(post);
+    public String postTradeAdd(@RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText) {
+        tradeService.getPostTradeAdd(nameSkin, floatSkin, fullText);
         return "redirect:/trade";
     }
 
 
     @GetMapping("/trade/{id}")
     public String tradeDetails(@PathVariable(value = "id") long id, Model model) {
-        if(!postRepository.existsById(id)){
+        if (!postRepository.existsById(id)) {
             return "redirect:/trade";
         }
-        Optional<Post> post = postRepository.findById(id);
-        ArrayList<Post> res = new ArrayList<>();
-        post.ifPresent(res::add);
-        model.addAttribute("post", res);
+        model.addAttribute("post", tradeService.getTradeDetailInfo(id));
         return "trade-details";
     }
 
+
     @GetMapping("/trade/{id}/edit")
     public String tradeEdit(@PathVariable(value = "id") long id, Model model) {
-        if(!postRepository.existsById(id)){
+        if (!postRepository.existsById(id)) {
             return "redirect:/trade";
         }
-        Optional<Post> post = postRepository.findById(id);
-        ArrayList<Post> res = new ArrayList<>();
-        post.ifPresent(res::add);
-        model.addAttribute("post", res);
+        model.addAttribute("post", tradeService.getTradeDetailInfo(id));
         return "trade-edit";
     }
 
     @PostMapping("/trade/{id}/edit")
-    public String postTradeUpdate(@PathVariable(value = "id") long id, @RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText, Model model) {
-        Post post = postRepository.findById(id).orElseThrow();
-        post.setNameSkin(nameSkin);
-        post.setFloatSkin(floatSkin);
-        post.setFullText(fullText);
-        postRepository.save(post);
+    public String postTradeUpdate(@PathVariable(value = "id") long id, @RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText) {
+        tradeService.getPostTradeUpdate(id, nameSkin, floatSkin, fullText);
         return "redirect:/trade";
     }
 
     @PostMapping("/trade/{id}/remove")
     public String postTradeRemove(@PathVariable(value = "id") long id, Model model) {
-        Post post = postRepository.findById(id).orElseThrow();
-        postRepository.delete(post);
+        tradeService.getPostTradeRemove(id);
         return "redirect:/trade";
     }
-
-
 
 }
