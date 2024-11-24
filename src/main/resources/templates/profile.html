@@ -22,7 +22,7 @@
                                  class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">John Smith</h5>
                             <div class="d-flex justify-content-center mb-2">
-                                <a href="/logout" class="btn btn-primary">Выйти</a>
+                                <a href="/logout" class="btn btn-outline-danger">Выйти</a>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                                 </li>
                                 <li class="list-group-item justify-content-between align-items-center p-3">
                                     <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                    <a href="#" class="btn btn-outline-primary">Настройка</a>
+                                    <a href="/profile/settings" class="btn btn-outline-primary">Настройка</a>
                                 </li>
                                 <li class="list-group-item justify-content-between align-items-center p-3">
                                     <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
@@ -56,12 +56,13 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
+                            <div th:each="el : ${userInfos}" class="alert alert-info mt-2">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Имя</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Johnatan Smith</p>
+                                    <p th:text="${el.name}" class="text-muted mb-0"></p>
                                 </div>
                             </div>
                             <hr>
@@ -70,7 +71,7 @@
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">alekseev.dn@mail.ru</p>
+                                    <p th:text="${el.email}" class="text-muted mb-0"></p>
                                 </div>
                             </div>
                             <hr>
@@ -79,7 +80,7 @@
                                     <p class="mb-0">Телефон</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">8(953)234-56-78</p>
+                                    <p th:text="${el.phone}" class="text-muted mb-0"></p>
                                 </div>
                             </div>
                             <hr>
@@ -88,23 +89,32 @@
                                     <p class="mb-0">Адрес</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Moscow, Decabristov 29</p>
+                                    <p th:text="${el.adres}"class="text-muted mb-0"></p>
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-15">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4">Инвентарь</p>
+                        <div>
+                            <div class="col-md-15">
+                                <div class="card">
+                                    <div class="container align-items-center p-3">
+                                        <strong>Инвентарь</strong>
+                                        <div class="Right d-inline-flex">
+                                            <form role="search">
+                                                <input class="form-control d-flex" type="search" placeholder="Поиск"
+                                                       aria-label="Search">
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div>
                                     <div class="album py-4 bg-body-tertiary">
                                         <div class="container">
                                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                                                 <div class="col">
-                                                    <div class="card shadow-sm">
+                                                    <a href="#" class="btn btn-outline-primary card shadow-sm">
                                                         <img src="img/AWPDragonLore.png"
                                                              alt="avatar"
                                                              class="rounded-circle img-fluid" style="width: 250px;">
@@ -116,10 +126,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card shadow-sm">
+                                                    <a href="#" class="btn btn-outline-primary card shadow-sm">
                                                         <img src="img/Karambit-Fade-Guide.png"
                                                              alt="avatar"
                                                              class="rounded-circle img-fluid" style="width: 250px;">
@@ -131,10 +141,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card shadow-sm">
+                                                    <a href="#" class="btn btn-outline-primary card shadow-sm">
                                                         <img src="img/AK-47CaseHardened.png"
                                                              alt="avatar"
                                                              class="rounded-circle img-fluid" style="width: 250px;">
@@ -146,52 +156,52 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card shadow-sm">
-                                                        <img src="img/SportGlovesVice.bmp"
+                                                    <a href="#" class="btn btn-outline-primary card shadow-sm">
+                                                        <img src="img/TalonKnifeDoppler.png"
                                                              alt="avatar"
                                                              class="rounded-circle img-fluid" style="width: 250px;">
                                                         <div class="card-body">
                                                             <p class="card-text d-flex justify-content-center mb-2">
-                                                                Sport Gloves | Vice</p>
+                                                                Talon Knife | Doppler</p>
                                                             <div class="d-flex justify-content-between align-items-center">
                                                                 <div class="btn-group">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card shadow-sm">
-                                                        <img src="img/ButterflyFade.png"
+                                                    <a href="#" class="btn btn-outline-primary card shadow-sm">
+                                                        <img src="img/M4A4Howl.png"
                                                              alt="avatar"
                                                              class="rounded-circle img-fluid" style="width: 250px;">
                                                         <div class="card-body">
                                                             <p class="card-text d-flex justify-content-center mb-2">
-                                                                Butterfly | Fade</p>
+                                                                M4A4 | Howl</p>
                                                             <div class="d-flex justify-content-between align-items-center">
                                                                 <div class="btn-group">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="card shadow-sm">
-                                                        <img src="img/AWPAsiimov.png"
+                                                    <a href="#" class="btn btn-outline-primary card shadow-sm">
+                                                        <img src="img/M4A1-SHyperBeast.png"
                                                              alt="avatar"
                                                              class="rounded-circle img-fluid" style="width: 250px;">
                                                         <div class="card-body">
-                                                            <p class="card-text d-flex justify-content-center mb-2">AWP
-                                                                | Asiimov</p>
+                                                            <p class="card-text d-flex justify-content-center mb-2">
+                                                                M4A1-S | Hyper Beast</p>
                                                             <div class="d-flex justify-content-between align-items-center">
                                                                 <div class="btn-group">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

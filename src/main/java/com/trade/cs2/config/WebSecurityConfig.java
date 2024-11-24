@@ -26,8 +26,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
 
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/trade", "/about", "/registration", "/img/**").permitAll()
-                        .requestMatchers("/trade/{id}", "/trade/add", "/trade/{id}/edit", "/trade/{id}/remove", "/login", "/profile").authenticated())
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/trade", "/about", "/registration", "/img/**" ).permitAll()
+                        .requestMatchers("/trade/{id}", "/trade/add", "/trade/{id}/edit", "/trade/{id}/remove", "/login", "/profile", "/profile/settings").authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .formLogin(formLogin -> formLogin.loginPage("/login").permitAll()).build();
 

@@ -1,6 +1,8 @@
 package com.trade.cs2.service;
 
 
+import com.trade.cs2.dto.CreateUserDto;
+import com.trade.cs2.mapper.UserMapper;
 import com.trade.cs2.models.User;
 import com.trade.cs2.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,32 +21,30 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private UserMapper userMapper;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return user;
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
-
 
     public User findUserById(Long userId) {
         Optional<User> userFromBd = userRepository.findById(userId);
         return userFromBd.orElse(new User());
     }
 
-    public List<User> allUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user) {
-        Optional<User> userFromDB = userRepository.findByUsername(user.getUsername());
-        if (userFromDB.isPresent()) {
+    public boolean saveUser(CreateUserDto userDto) {
+        if (userRepository.existsByUsername(userDto.getUsername())) {
             return false;
+
         }
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        userRepository.save(userMapper.toUser(userDto));
         return true;
     }
 
@@ -57,6 +57,4 @@ public class UserService implements UserDetailsService {
     }
 
 }
-
-
 
