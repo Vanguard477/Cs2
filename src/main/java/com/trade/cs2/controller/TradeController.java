@@ -50,6 +50,8 @@ public class TradeController {
     }
 
 
+
+
     @GetMapping("/trade/{id}/edit")
     public String tradeEdit(@PathVariable(value = "id") long id, Model model) {
         if (!postRepository.existsById(id)) {

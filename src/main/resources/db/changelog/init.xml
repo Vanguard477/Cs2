@@ -1,0 +1,55 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="1469bd86-24fc-45f8-b3a4-c90e11408789" author="user">
+        <insert tableName="weapon">
+            <column name="name" value="Калаш"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш2"/>
+            <column name="quality" value="После полевых2"/>
+            <column name="image" value="Картинка2"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш3"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш4"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш5"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш6"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш7"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш8"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш9"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapon">
+            <column name="name" value="Калаш10"/>
+            <column name="quality" value="После полевых"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
