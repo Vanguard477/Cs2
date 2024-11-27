@@ -26,7 +26,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
 
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/trade", "/about", "/registration", "/img/**" , "/shop", "/shop/{id}" ).permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/trade", "/about", "/registration", "/img/**" , "/shop", "/shop/{id}", "/h2-console/**").permitAll()
                         .requestMatchers("/trade/{id}", "/trade/add", "/trade/{id}/edit", "/trade/{id}/remove", "/login", "/profile", "/profile/settings").authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .formLogin(formLogin -> formLogin.loginPage("/login").permitAll()).build();
@@ -37,6 +37,8 @@ public class WebSecurityConfig {
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
+
+
 
 
 }

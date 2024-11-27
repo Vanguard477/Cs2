@@ -1,27 +1,22 @@
 package com.trade.cs2.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 @Entity
+@Table(name = "weapons")
 public class Weapon {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String quality;
     private String image;
 
-    public Weapon() {
-
-    }
 
     public Weapon(String name, String quality, String image) {
         this.name = name;
@@ -29,4 +24,7 @@ public class Weapon {
         this.image = image;
     }
 
+    public Weapon() {
+
+    }
 }

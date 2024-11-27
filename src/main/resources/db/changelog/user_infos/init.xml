@@ -1,17 +1,17 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet id="1469bd86-24fc-45f8-b3a4-c90e11408786" author="user">
-        <createTable tableName="posts">
+    <changeSet id="633e7c10-ebea-465a-ad80-dbf339a02088" author="user">
+        <createTable tableName="user_infos">
             <column name="id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name_skin" type="varchar">
+            <column name="name" type="varchar">
             </column>
-            <column name="float_skin" type="varchar">
+            <column name="email" type="varchar">
             </column>
-            <column name="full_text" type="varchar">
+            <column name="adres" type="varchar">
             </column>
-            <column name="views" type="integer">
+            <column name="phone" type="varchar">
             </column>
         </createTable>
     </changeSet>

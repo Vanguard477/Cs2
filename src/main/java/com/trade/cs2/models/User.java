@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Accessors(chain = true)
 @Getter
 @Setter

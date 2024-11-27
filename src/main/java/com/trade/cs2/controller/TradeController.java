@@ -1,7 +1,6 @@
 package com.trade.cs2.controller;
 
 
-import com.trade.cs2.models.Post;
 import com.trade.cs2.repo.PostRepository;
 import com.trade.cs2.service.TradeService;
 import lombok.RequiredArgsConstructor;
@@ -48,8 +47,6 @@ public class TradeController {
         model.addAttribute("post", tradeService.getTradeDetailInfo(id));
         return "trade-details";
     }
-
-
 
 
     @GetMapping("/trade/{id}/edit")
