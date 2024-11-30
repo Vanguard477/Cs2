@@ -1,9 +1,11 @@
 package com.trade.cs2.controller;
 
 
-import com.trade.cs2.models.Post;
 import com.trade.cs2.repo.PostRepository;
+import com.trade.cs2.repo.WeaponInventoryRepository;
+import com.trade.cs2.repo.WeaponRepository;
 import com.trade.cs2.service.TradeService;
+import com.trade.cs2.service.WeaponService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +22,16 @@ public class TradeController {
     private PostRepository postRepository;
     @Autowired
     private final TradeService tradeService;
-
+    @Autowired
+    private final WeaponService weaponService;
+    @Autowired
+    private WeaponRepository weaponRepository;
+    @Autowired
+    private WeaponInventoryRepository weaponInventoryRepository;
 
     @GetMapping("/trade")
     public String trade(Model model) {
-        model.addAttribute("post", postRepository.findAll());
+        model.addAttribute("trade", weaponInventoryRepository.findAll());
         return "trade";
     }
 
@@ -34,40 +41,30 @@ public class TradeController {
     }
 
     @PostMapping("/trade/add")
-    public String postTradeAdd(@RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText) {
-        tradeService.getPostTradeAdd(nameSkin, floatSkin, fullText);
+    public String postTradeAdd(String name, String quality, String image) {
+        weaponService.getWeaponInventoryAdd(name, quality, image);
         return "redirect:/trade";
     }
 
-
-    @GetMapping("/trade/{id}")
-    public String tradeDetails(@PathVariable(value = "id") long id, Model model) {
-        if (!postRepository.existsById(id)) {
-            return "redirect:/trade";
-        }
-        model.addAttribute("post", tradeService.getTradeDetailInfo(id));
-        return "trade-details";
-    }
-
-
     @GetMapping("/trade/{id}/edit")
     public String tradeEdit(@PathVariable(value = "id") long id, Model model) {
-        if (!postRepository.existsById(id)) {
+        if (!weaponInventoryRepository.existsById(id)) {
             return "redirect:/trade";
         }
-        model.addAttribute("post", tradeService.getTradeDetailInfo(id));
+        model.addAttribute("tradeEdit", weaponService.getWeaponDetailInfo(id));
+        model.addAttribute("inventoryTradeShop", weaponRepository.findAll());
         return "trade-edit";
     }
 
     @PostMapping("/trade/{id}/edit")
-    public String postTradeUpdate(@PathVariable(value = "id") long id, @RequestParam String nameSkin, @RequestParam String floatSkin, @RequestParam String fullText) {
-        tradeService.getPostTradeUpdate(id, nameSkin, floatSkin, fullText);
+    public String postTradeUpdate(@PathVariable(value = "id") long id, String name, String quality, String image) {
+        weaponService.getWeaponTradeUpdate(id, name, quality, image);
         return "redirect:/trade";
     }
 
     @PostMapping("/trade/{id}/remove")
     public String postTradeRemove(@PathVariable(value = "id") long id, Model model) {
-        tradeService.getPostTradeRemove(id);
+        weaponService.getWeaponInventoryRemove(id);
         return "redirect:/trade";
     }
 

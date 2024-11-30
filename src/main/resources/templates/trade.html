@@ -8,14 +8,24 @@
 <header th:insert="blocks/header :: header"></header>
 
 <div class="container mt-5">
-    <h1>Обмены скинов</h1>
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el.floatSkin}"/>
-        <p th:text="${el.nameSkin}"/>
-        <a th:href="'/trade/' + ${el.id}" class="btn btn-warning " >Детальнее</a>
+    <h1>Ваш инвентарь</h1>
+    <div>
+        <div class="album py-0 bg-body-tertiary">
+            <div class="container">
+                <div class="row row-cols-3 row-cols-sm-3 row-cols-md-4 g-4">
+    <div th:each="el : ${trade}" class="col btn btn-outline-primary card shadow-sm">
+        <img src="img/M4A1-SHyperBeast.png"
+             alt="avatar"
+             class="rounded-circle img-fluid" style="width: 275px;">
+        <h3 th:text="${el.name}"/>
+        <p th:text="${el.quality}"/>
+        <a th:href="'/trade/' + ${el.id} + '/edit'" class="btn btn-warning " >Обменять</a>
     </div>
-
-    <div th:insert="blocks/footer :: footer"></div>
+    </div>
+    </div>
+    </div>
+    </div>
 </div>
+    <div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

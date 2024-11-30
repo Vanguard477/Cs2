@@ -1,0 +1,79 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="856de7f2-6c40-4f70-acde-1237cba3efbf" author="user">
+        <createSequence sequenceName="weapons_seq" minValue="0" incrementBy="50"></createSequence>
+        <createTable tableName="weapons">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar">
+            </column>
+            <column name="quality" type="varchar">
+            </column>
+            <column name="image" type="varchar">
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1469bd86-24fc-45f8-b3a4-c90e11408789" author="user">
+        <insert tableName="weapons">
+            <column name="id" value="1"/>
+            <column name="name" value="AK-47 | Case Hardened"/>
+            <column name="quality" value="(Factory New)"/>
+            <column name="image" value="Картинка3"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="2"/>
+            <column name="name" value="AWP | Dragon Lore"/>
+            <column name="quality" value="(Field-Tested)"/>
+            <column name="image" value="Картинка"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="3"/>
+            <column name="name" value="Karambit | Fade"/>
+            <column name="quality" value="(Factory New)"/>
+            <column name="image" value="Картинка2"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="4"/>
+            <column name="name" value="Talon Knife | Doppler"/>
+            <column name="quality" value="(Field-Tested)"/>
+            <column name="image" value="Картинка4"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="5"/>
+            <column name="name" value="M4A4 | Howl"/>
+            <column name="quality" value="(Factory New)"/>
+            <column name="image" value="Картинка5"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="6"/>
+            <column name="name" value="M4A1-S | Hyper Beast"/>
+            <column name="quality" value="(Factory New)"/>
+            <column name="image" value="Картинка6"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="7"/>
+            <column name="name" value="Sport Gloves | Vice"/>
+            <column name="quality" value="(Field-Tested)"/>
+            <column name="image" value="Картинка7"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="8"/>
+            <column name="name" value="AWP | Asiimov"/>
+            <column name="quality" value="(Field-Tested)"/>
+            <column name="image" value="Картинка8"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="9"/>
+            <column name="name" value="Butterfly | Fade"/>
+            <column name="quality" value="(Field-Tested)"/>
+            <column name="image" value="Картинка9"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="10"/>
+            <column name="name" value="AWP | Dragon Lore"/>
+            <column name="quality" value="(Factory New)"/>
+            <column name="image" value="Картинка10"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
