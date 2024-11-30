@@ -1,27 +1,72 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Редактирование обмена</title>
+    <title>Обмен</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-
-<div class="container mt-5 mb-5 ">
-    <h1>Редактирование обмена</h1>
-    <div th:each="el : ${post}">
-        <form method="post">
-            <input type="text" th:value="${el.floatSkin}" name="floatSkin" placeholder="Выберете качество скина"
-                   class="form-control"><br>
-            <input type="text" th:value="${el.nameSkin}" name="nameSkin" placeholder="Введите название скина"
-                   class="form-control"><br>
-            <textarea name="fullText" placeholder="Напишите на что готовы обменять" class="form-control"
-                      th:text="${el.fullText}"></textarea><br>
-            <button type="submit" class="btn btn-success">Обновить</button>
-        </form>
+<div class="container mt-5">
+    <h3>Ваш скин на обмен:</h3>
+    <div class="Right flex">
+        <div class="col-md-15">
+            <div class="row">
+                <div class="row-cols-0 row-cols-sm-0 row-cols-md-4 g-1">
+                    <div th:each="el : ${tradeEdit}">
+                        <form method="post">
+                            <div class="col btn btn-outline-primary card shadow-sm">
+                                <img src="img/M4A1-SHyperBeast.png"
+                                     alt="avatar"
+                                     class="rounded-circle img-fluid" style="width: 225px;">
+                                <div class="card-body">
+                                    <h4 th:text="${el.name}"/>
+                                    <p th:text="${el.quality}"/>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <h3>Выберете скин из списка:</h3>
+                <div class="row row-cols-3 row-cols-sm-3 row-cols-md-5 g-3">
+                    <div th:each="el : ${inventoryTradeShop}"
+                         class="col btn btn-outline-primary card shadow-sm">
+                        <form method="post">
+                            <img src="img/M4A1-SHyperBeast.png"
+                                 alt="avatar"
+                                 class="rounded-circle img-fluid"
+                                 style="width: 225px;">
+                            <div class="card-body">
+                                <h4 th:text="${el.name}"/>
+                                <p th:text="${el.quality}"/>
+                                <textarea style="display:none;" readonly
+                                          th:text="${el.name}" name="name"
+                                          class="form-control"></textarea>
+                                <textarea style="display:none;" readonly
+                                          th:text="${el.quality}"
+                                          name="quality"
+                                          class="form-control"></textarea>
+                                <textarea style="display:none;" readonly
+                                          th:text="${el.image}" name="image"
+                                          class="form-control"></textarea>
+                                <button type="submit" class="btn btn-success">
+                                    Обменять
+                                </button>
+                                <div class="align-items-center">
+                                    <div class="btn-group">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div th:insert="blocks/footer :: footer"></div>
-
+</div>
+<div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

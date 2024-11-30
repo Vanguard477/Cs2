@@ -11,7 +11,7 @@ import lombok.Setter;
 @Table(name = "user_infos")
 public class UserInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name, email, adres, phone;
 

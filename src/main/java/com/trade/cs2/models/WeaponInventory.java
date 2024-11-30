@@ -1,6 +1,5 @@
 package com.trade.cs2.models;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,8 +7,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "weapons")
-public class Weapon {
+@Table(name = "weapons_inventory")
+public class WeaponInventory {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -18,13 +17,13 @@ public class Weapon {
     private String image;
 
 
-    public Weapon(String name, String quality, String image) {
+    public WeaponInventory(String name, String quality, String image) {
         this.name = name;
         this.quality = quality;
         this.image = image;
     }
 
-    public Weapon() {
+    public WeaponInventory() {
 
     }
 }

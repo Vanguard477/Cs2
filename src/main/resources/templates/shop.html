@@ -31,8 +31,8 @@
                                 <div class="album py-0 bg-body-tertiary">
                                     <div class="container">
                                         <div class="row row-cols-3 row-cols-sm-3 row-cols-md-5 g-3">
-                                            <div th:each="el : ${inventory}" class="col">
-                                                <a th:href="'/shop' + ${el.id}" class="btn btn-outline-primary card shadow-sm">
+                                            <div th:each="el : ${inventoryShop}" class="col">
+                                                <a th:href="'/shop/' + ${el.id}" class="btn btn-outline-primary card shadow-sm">
                                                     <img src="img/M4A1-SHyperBeast.png"
                                                          alt="avatar"
                                                          class="rounded-circle img-fluid" style="width: 200px;">

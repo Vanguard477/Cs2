@@ -4,4 +4,5 @@
     <include file="posts/init.xml" relativeToChangelogFile="true"/>
     <include file="users/init.xml" relativeToChangelogFile="true"/>
     <include file="user_infos/init.xml" relativeToChangelogFile="true"/>
+    <include file="weapons_inventory/init.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

@@ -1,6 +1,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <changeSet id="856de7f2-6c40-4f70-acde-1237cba3efbf" author="user">
+        <createSequence sequenceName="weapons_seq" minValue="0" incrementBy="50"></createSequence>
         <createTable tableName="weapons">
             <column name="id" type="bigint">
                 <constraints primaryKey="true"/>
@@ -16,21 +17,21 @@
     <changeSet id="1469bd86-24fc-45f8-b3a4-c90e11408789" author="user">
         <insert tableName="weapons">
             <column name="id" value="1"/>
+            <column name="name" value="AK-47 | Case Hardened"/>
+            <column name="quality" value="(Factory New)"/>
+            <column name="image" value="Картинка3"/>
+        </insert>
+        <insert tableName="weapons">
+            <column name="id" value="2"/>
             <column name="name" value="AWP | Dragon Lore"/>
             <column name="quality" value="(Field-Tested)"/>
             <column name="image" value="Картинка"/>
         </insert>
         <insert tableName="weapons">
-            <column name="id" value="2"/>
+            <column name="id" value="3"/>
             <column name="name" value="Karambit | Fade"/>
             <column name="quality" value="(Factory New)"/>
             <column name="image" value="Картинка2"/>
-        </insert>
-        <insert tableName="weapons">
-            <column name="id" value="3"/>
-            <column name="name" value="AK-47 | Case Hardened"/>
-            <column name="quality" value="(Factory New)"/>
-            <column name="image" value="Картинка3"/>
         </insert>
         <insert tableName="weapons">
             <column name="id" value="4"/>

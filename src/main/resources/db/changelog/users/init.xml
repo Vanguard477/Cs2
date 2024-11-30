@@ -1,8 +1,9 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <changeSet id="cab907cc-69e0-4285-9abc-1da95c594d7f" author="user">
+        <createSequence sequenceName="users_seq" minValue="0" incrementBy="50"></createSequence>
         <createTable tableName="users">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" valueComputed="users_seq.NEXTVAL"  >
                 <constraints primaryKey="true"/>
             </column>
             <column name="username" type="varchar">
